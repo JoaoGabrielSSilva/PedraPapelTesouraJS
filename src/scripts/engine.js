@@ -23,7 +23,7 @@ const playerSides = {
     computer: "computer-cards",
 };
 
-const pathImages = "./src/assets/";
+const pathImages = "./src/assets/icons/";
 const cardData = [
     {
         id: 0,
@@ -72,8 +72,6 @@ async function createCardImage(randomIdCard, fieldSide){
             drawSelectCard(randomIdCard);
         });
     }
-
-    
 
     return cardImage;
 }
