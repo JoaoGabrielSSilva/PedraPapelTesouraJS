@@ -173,7 +173,8 @@ async function playAudio(status){
 
 async function mute(){
     if(state.score.musica == 1){
-        bgm.stop();
+        bgm.pause();
+        bgm.currentTime = 0;
     }
     else{
         bgm.play();
