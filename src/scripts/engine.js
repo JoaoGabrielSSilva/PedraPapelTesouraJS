@@ -172,7 +172,7 @@ async function playAudio(status){
 }
 
 async function mute(){
-    if(state.score.musica == true){
+    if(state.score.musica === true){
         bgm.pause();
         bgm.currentTime = 0;
         state.score.musica = false;
@@ -193,7 +193,7 @@ function init(){
 
     const bgm = document.getElementById("bgm")
     bgm.play();
-    if(state.score.musica == false){
+    if(state.score.musica === false){
         mute();
     }
     
