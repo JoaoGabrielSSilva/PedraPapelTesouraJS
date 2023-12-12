@@ -54,6 +54,7 @@ const cardData = [
     },
 ];
 
+
 async function getRandomCardId(){
     const randomIndex = Math.floor(Math.random() * cardData.length);
     return cardData[randomIndex].id;
@@ -103,6 +104,33 @@ async function setCardsField(cardId){
 
     await updateScore();
     await drawButton(duelResults);
+}
+
+async function updateScore(){
+    state.score.scoreBox.innerText = `Vitórias: ${state.score.playerScore} | Derrotas: ${state.score.computerScore}`;
+}
+
+async function drawButton(text){
+    state.actions.button.innerText = text;
+    state.actions.button.style.display = "block";
+}
+
+async function checkDuelResults(playerCardId, ComputerCardId){
+    let duelResults = "Empate";
+    let playerCard = cardData[playerCardId];
+
+    if(playerCard.WinOf.includes(ComputerCardId)){
+        duelResults = "Ganhou";
+        state.score.playerScore++;
+    }
+
+    if(playerCard.LoseOf.includes(ComputerCardId)){
+        duelResults = "Perdeu";
+        state.score.computerScore++;
+    }
+
+    return duelResults;
+
 }
 
 async function drawSelectCard(index){
