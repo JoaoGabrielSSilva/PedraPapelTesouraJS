@@ -67,7 +67,7 @@ async function createCardImage(randomIdCard, fieldSide){
     cardImage.setAttribute("data-id", randomIdCard);
     cardImage.classList.add("card");
 
-    if(fieldSide === playerSides.player){
+    if(fieldSide === state.playerSides.player){
         cardImage.addEventListener("click", () => {
             setCardsField(cardImage.getAttribute("data-id"))
         });
