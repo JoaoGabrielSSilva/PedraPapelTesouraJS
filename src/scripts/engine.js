@@ -121,11 +121,13 @@ async function checkDuelResults(playerCardId, ComputerCardId){
 
     if(playerCard.WinOf.includes(ComputerCardId)){
         duelResults = "Ganhou";
+        await playAudio("win");
         state.score.playerScore++;
     }
 
     if(playerCard.LoseOf.includes(ComputerCardId)){
         duelResults = "Perdeu";
+        await playAudio("lose");
         state.score.computerScore++;
     }
 
@@ -146,6 +148,22 @@ async function drawCards(cardQuantity, fieldSide){
 
         document.getElementById(fieldSide).appendChild(cardImage);
     }
+}
+
+async function resetDuel(){
+    state.cardSprites.avatar.src = ""
+    state.actions.button.style.display = "none";
+
+    state.fieldCards.player.style.display = "none";
+    state.fieldCards.computer.style.display = "none";
+
+    init();
+}
+
+async function playAudio(status){
+    const audio = new Audio(`./src/assets/audios/${status}.wav`);
+    audio.play();
+
 }
 
 
