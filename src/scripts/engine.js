@@ -3,6 +3,7 @@ const state = {
         playerScore: 0, 
         computerScore: 0,
         scoreBox: document.getElementById("score_points"),
+        musica: 1,
     },
     cardSprites:{
         avatar: document.getElementById("card-image"),
@@ -21,6 +22,7 @@ const state = {
     },
     actions: {
         button: document.getElementById("next-duel"),
+        mute: document.getElementById("mute"), 
     },
 };
 
@@ -97,6 +99,10 @@ async function setCardsField(cardId){
     state.fieldCards.player.style.display = "block";
     state.fieldCards.computer.style.display = "block";
 
+    state.cardSprites.avatar.src = "";
+    state.cardSprites.name.innerText = "";
+    state.cardSprites.type.innerText = "";
+
     state.fieldCards.player.src = cardData[cardId].img;
     state.fieldCards.computer.src = cardData[computerCardId].img;
 
@@ -163,13 +169,31 @@ async function resetDuel(){
 async function playAudio(status){
     const audio = new Audio(`./src/assets/audios/${status}.wav`);
     audio.play();
+}
 
+async function mute(){
+    if(state.score.musica == 1){
+        bgm.stop();
+    }
+    else{
+        bgm.play();
+    }
 }
 
 
 function init(){
+    state.fieldCards.player.style.display = "none";
+    state.fieldCards.computer.style.display = "none";
+
     drawCards(5, state.playerSides.player);
     drawCards(5, state.playerSides.computer);
+
+    
+    if(state.score.musica == 1){
+        const bgm = document.getElementById("bgm")
+        bgm.play();
+    }
+    
 }
 
 init();

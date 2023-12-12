@@ -14,8 +14,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
 
+    <link rel="shortcut icon" href="./src/assets/favicon/Favicon.ico" type="image/x-icon">
+
 </head>
 <body>
+
+    <audio id="bgm" loop>
+        <source src="./src/assets/audios/egyptian_duel.mp3" type="audio/mp3">
+    </audio>
 
     <div class="bg-video">
         <video class="video" autoplay loop muted>
@@ -35,6 +41,7 @@
                 <p id="card-name">Selecione</p>
                 <p id="card-type">Uma carta</p>
             </div>
+            <button id="mute" class="rpgui-button" onclick="mute()">MUTE</button>
 
         </div>
         <div class="container__right">
