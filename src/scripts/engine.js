@@ -183,6 +183,7 @@ async function mute(){
 
 
 function init(){
+    const bgm = document.getElementById("bgm")
     state.fieldCards.player.style.display = "none";
     state.fieldCards.computer.style.display = "none";
 
@@ -191,7 +192,6 @@ function init(){
 
     
     if(state.score.musica == 1){
-        const bgm = document.getElementById("bgm")
         bgm.play();
     }
     
