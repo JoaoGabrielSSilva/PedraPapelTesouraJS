@@ -175,6 +175,7 @@ async function mute(){
     if(state.score.musica == 1){
         bgm.pause();
         bgm.currentTime = 0;
+        state.score.musica = 0;
     }
     else{
         bgm.play();
@@ -184,15 +185,15 @@ async function mute(){
 
 function init(){
     const bgm = document.getElementById("bgm")
+    bgm.play();
     state.fieldCards.player.style.display = "none";
     state.fieldCards.computer.style.display = "none";
 
     drawCards(5, state.playerSides.player);
     drawCards(5, state.playerSides.computer);
 
-    
-    if(state.score.musica == 1){
-        bgm.play();
+    if(state.score.musica == 0){
+        mute();
     }
     
 }
