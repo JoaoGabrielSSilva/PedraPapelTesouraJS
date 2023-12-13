@@ -3,7 +3,7 @@ const state = {
         playerScore: 0, 
         computerScore: 0,
         scoreBox: document.getElementById("score_points"),
-        mute: false,
+        mute: true,
         bgm: document.getElementById("bgm")
     },
     cardSprites:{
@@ -172,9 +172,17 @@ async function playAudio(status){
     audio.play();
 }
 
-async function mute(){
-    state.score.bgm.pause();
-    state.score.bgm.currentTime = 0;
+async function musica(){
+    if(state.score.mute === false){
+        state.score.bgm.pause();
+        state.score.bgm.currentTime = 0;
+        state.score.mute = true;
+    }
+    else{
+        state.score.bgm.play();
+        state.score.mute = false;
+    }
+    
 }
 
 function init(){
@@ -183,16 +191,8 @@ function init(){
     state.fieldCards.computer.style.display = "none";
 
     drawCards(5, state.playerSides.player);
-    drawCards(5, state.playerSides.computer);
-
-    if(state.score.mute === false){
-        state.score.bgm.play();
-    }
-    else{
-        mute();
-    }
-    
-    
+    drawCards(5, state.playerSides.computer);  
+    musica()
 }
 
 init();
